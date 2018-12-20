@@ -1,5 +1,6 @@
 package com.example.lanavia.pruebaemulador
 
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import kotlinx.android.synthetic.main.layout_row.view.*
 
 class MainAdapter:RecyclerView.Adapter<CustomViewHolder>(){
 
+        //DataSource
     val rowsOfLayout = listOf<Movie>(Movie("Rápido y furioso", 2001),
         Movie("el padrino", 1972),
         Movie("Sueños de libertad", 1994),
@@ -38,5 +40,11 @@ class MainAdapter:RecyclerView.Adapter<CustomViewHolder>(){
 
 
 class CustomViewHolder(v:View): RecyclerView.ViewHolder(v){
+    init {
+        v.setOnClickListener {
+            val intent = Intent(v.context, DetailMovie::class.java)
+            v.context.startActivity(intent)
+        }
+    }
 
 }
